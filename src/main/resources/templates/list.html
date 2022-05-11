@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>List of Players</title>
+</head>
+<body>
+<a th:href="@{/players/add}">Adauga</a>
+<table th:each="player: ${players}">
+    <tr>
+        <td th:text="${player.name}"></td>
+        <td><a th:href="@{'/players/delete/' + ${player.id}}">delete</a></td>
+        <td><a th:href="@{'/players/' + ${player.id} + '/add-ticket'}">addTicket</a></td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title> Add User</title>
+</head>
+<body>
+    <form action="/players/add" method="post">
+        <label for="name">Name</label>
+        <input id="name" th:name="name">
+        <input type="submit" value="ADD">
+    </form>
+</body>
+</html>
