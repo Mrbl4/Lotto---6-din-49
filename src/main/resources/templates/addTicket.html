@@ -4,6 +4,8 @@
     <title> Add Ticket</title>
 </head>
 <body>
+<a th:href="@{/}">Home</a>
+<br><br><br>
 <form th:action="@{'/players/' + ${id} + '/add-ticket'}" method="post">
     <label for="noOne">Number 1</label>
     <input id="noOne" th:name="noOne">
@@ -20,6 +22,8 @@
     <label for="noFive">Number 5</label>
     <input id="noFive" th:name="noFive">
     <br>
+    <label for="noFive">Number 6</label>
+    <input id="noSix" th:name="noSix">
     <input type="submit" value="ADD">
 </form>
 </body>

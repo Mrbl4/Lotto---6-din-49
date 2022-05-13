@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+<p>
+    The winning numbers are:
+</p>
+<table th:each="number: ${numbers}">
+    <tr>
+        <td th:text="${number}"></td>
+    </tr>
+</table>
+</body>
+</html>

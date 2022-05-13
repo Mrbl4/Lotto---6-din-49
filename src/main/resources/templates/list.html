@@ -2,14 +2,32 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>List of Players</title>
+    <style>
+    p.groove {border-style: groove;}
+    table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 20;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+</style>
 </head>
 <body>
+<a th:href="@{/}">Home</a>
+<br><br><br>
 <a th:href="@{/players/add}">Adauga</a>
+<br><br><br>
 <table th:each="player: ${players}">
     <tr>
         <td th:text="${player.name}"></td>
         <td><a th:href="@{'/players/delete/' + ${player.id}}">delete</a></td>
-        <td><a th:href="@{'/players/' + ${player.id} + '/add-ticket'}">addTicket</a></td>
+<!--        <td><a th:href="@{'/players/delete/' + ${player.id}}" class="btn btn-info" role="button">Delete</a></td>-->
+        <td><a th:href="@{'/players/' + ${player.id} + '/add-ticket'}">add ticket</a></td>
     </tr>
 </table>
 </body>
