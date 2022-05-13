@@ -38,14 +38,14 @@ public class PlayerController {
 //    @GetMapping("/add")
     @GetMapping("/players/add")
     public String form(){
-        return "addUser";
+        return "addPlayer";
     }
 
 
 //    @PostMapping("/add")
     @PostMapping("/players/add")
-    public String addPlayer(Model model, @RequestParam("name") String name){
-        playerRepository.save(new Player(name));
+    public String addPlayer(Model model, @RequestParam("name") String name, @RequestParam("password") String password){
+        playerRepository.save(new Player(name, password));
       return "redirect:/players/";
     }
 

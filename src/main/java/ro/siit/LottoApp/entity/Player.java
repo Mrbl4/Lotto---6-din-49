@@ -11,6 +11,7 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    private String password;
 
 
     @OneToMany(mappedBy = "id")
@@ -20,8 +21,9 @@ public class Player {
     public Player() {
     }
 
-    public Player(String name) {
+    public Player(String name, String password) {
         this.name = name;
+        this.password = password;
     }
 
     public Long getId() {
@@ -44,12 +46,19 @@ public class Player {
 
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "Player{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", tickets=" + tickets +
                 '}';
     }
 }

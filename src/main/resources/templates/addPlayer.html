@@ -6,9 +6,12 @@
 <body>
     <a th:href="@{/}">Home</a>
     <br><br><br>
+    Registration form:
     <form action="/players/add" method="post">
         <label for="name">Name</label>
         <input id="name" th:name="name">
+        <label for="password">Password</label>
+        <input id="password" th:name="password" type="password">
         <input type="submit" value="ADD">
     </form>
 </body>
