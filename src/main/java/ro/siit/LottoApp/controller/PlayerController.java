@@ -93,7 +93,7 @@ public class PlayerController {
         Player player = playerService.getPlayerById(id);
         Random random = new Random();
         int[] generatedNumbers = new int[6];
-        for (int i=1; i<=6; i++){
+        for (int i=0; i<=5; i++){
             generatedNumbers[i] = random.nextInt(1, 49);
         }
         Ticket ticket = new Ticket(generatedNumbers[0], generatedNumbers[1], generatedNumbers[2], generatedNumbers[3], generatedNumbers[4], generatedNumbers[5]);
