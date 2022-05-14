@@ -1,6 +1,7 @@
 package ro.siit.LottoApp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ro.siit.LottoApp.entity.Player;
 import ro.siit.LottoApp.repository.PlayerRepository;
@@ -10,7 +11,10 @@ import java.util.*;
 @Service
 public class PlayerService {
 
+    @Autowired //
     private PlayerRepository playerRepository;
+
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     public PlayerService(PlayerRepository playerRepository) {
@@ -44,5 +48,9 @@ public class PlayerService {
             System.out.print(i + " ");
         }
         return winningNumbers;
+    }
+
+    public Player savePlayer(String name, String password) {
+        return playerRepository.save(new Player(name, passwordEncoder.encode(password)));
     }
 }

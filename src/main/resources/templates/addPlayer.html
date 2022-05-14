@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title> Add User</title>
+    <title> Add User </title>
+
 </head>
-<body>
+<body style = "background-color: floralwhite;">
+    Player Registration form:
     <a th:href="@{/}">Home</a>
     <br><br><br>
-    Registration form:
     <form action="/players/add" method="post">
         <label for="name">Name</label>
         <input id="name" th:name="name">

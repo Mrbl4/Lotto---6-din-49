@@ -17,10 +17,10 @@ public class PlayerSecurityService implements UserDetailsService {
     private PlayerRepository playerRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Player player = playerRepository.findByName(username);
+    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+        Player player = playerRepository.findByName(name);
         if(player == null) {
-            throw new UsernameNotFoundException(username);
+            throw new UsernameNotFoundException(name);
         }
         return new org.springframework.security.core.userdetails.User(player.getName(),
                 player.getPassword(),

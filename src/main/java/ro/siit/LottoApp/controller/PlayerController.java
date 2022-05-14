@@ -13,6 +13,7 @@ import ro.siit.LottoApp.repository.TicketRepository;
 import ro.siit.LottoApp.service.PlayerService;
 
 import java.util.List;
+import java.util.Random;
 
 @Controller
 //@RequestMapping("/players")
@@ -45,11 +46,11 @@ public class PlayerController {
 //    @PostMapping("/add")
     @PostMapping("/players/add")
     public String addPlayer(Model model, @RequestParam("name") String name, @RequestParam("password") String password){
-        playerRepository.save(new Player(name, password));
+        playerService.savePlayer(name, password);
       return "redirect:/players/";
     }
 
-//    @GetMapping("/{id}/add-ticket")
+
     @GetMapping("/players/{id}/add-ticket")
     public String ticketForm(Model model, @PathVariable("id") Long id){
         System.out.println("add ticket id = " + id);
@@ -57,7 +58,7 @@ public class PlayerController {
         return "addTicket";
     }
 
-//    @PostMapping("/{id}/add-ticket")
+
     @PostMapping("/players/{id}/add-ticket")
     public String addTicket(Model model,
                             @RequestParam("noOne") int number1,
@@ -75,6 +76,32 @@ public class PlayerController {
             return "redirect:/tickets";
             //daca introduc nr corecte imi creaza tichetele, dar nu mai merge list-ul de pe tickets
             //daca introduc nr incorect imi afiseaza "incorrect number"
+//        } catch (IncorrectNumberException e) {
+//            return "ticket-exception";
+//        }
+    }
+
+    @GetMapping("/players/{id}/add-random-ticket")
+    public String randomTicketForm(Model model, @PathVariable("id") Long id){
+        model.addAttribute("id", id);
+        return "addRandomTicket";
+    }
+
+    @PostMapping("/players/{id}/add-random-ticket")
+    public String addRandomTicket(Model model, @PathVariable("id") Long id) {
+//        try {
+        Player player = playerService.getPlayerById(id);
+        Random random = new Random();
+        int[] generatedNumbers = new int[6];
+        for (int i=1; i<=6; i++){
+            generatedNumbers[i] = random.nextInt(1, 49);
+        }
+        Ticket ticket = new Ticket(generatedNumbers[0], generatedNumbers[1], generatedNumbers[2], generatedNumbers[3], generatedNumbers[4], generatedNumbers[5]);
+        ticket.setPlayer(player);
+        ticketRepository.save(ticket);
+        return "redirect:/tickets";
+        //daca introduc nr corecte imi creaza tichetele, dar nu mai merge list-ul de pe tickets
+        //daca introduc nr incorect imi afiseaza "incorrect number"
 //        } catch (IncorrectNumberException e) {
 //            return "ticket-exception";
 //        }

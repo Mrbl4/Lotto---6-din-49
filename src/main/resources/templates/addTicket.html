@@ -2,8 +2,14 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title> Add Ticket</title>
+
+<style>
+
+    * {background-color: honeydew}
+
+    </style>
 </head>
-<body>
+<body style = "background-color: floralwhite;">
 <a th:href="@{/}">Home</a>
 <br><br><br>
 <form th:action="@{'/players/' + ${id} + '/add-ticket'}" method="post">

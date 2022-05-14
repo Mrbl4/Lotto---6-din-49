@@ -1,18 +1,88 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" href="style.css">
 <style>
-    p.groove {border-style: groove;}
+
+
+<!--    p.groove {border-style: groove;}-->
+
+    body{background-color: floralwhite;}
+
+<!--    h1{-->
+<!--&lt;!&ndash;    color:indianred;&ndash;&gt;-->
+<!--    background-color: floralwhite;}-->
+
+<!--    .title{-->
+<!--    background-color: floralwhite;-->
+<!--    }-->
+
+<!--    p{-->
+<!--    color:indianred;-->
+<!--    background-color: floralwhite;}-->
+
+<!--    *{-->
+<!--    margin:0;-->
+<!--    padding:0;-->
+<!--    }-->
+
+
+
+<!--    * {background-color: honeydew}-->
+
+
+
+  .block1{
+    position: relative;
+    left: 10em;
+    width: 10em;
+    height: 10em;
+    background-color:wheat;
+  }
+
+  .block2{
+    position: absolute;
+    width: 10em;
+    height: 10em;
+    background-color:pink;
+    left: 10em;
+  }
+
+  .block3{
+    position: sticky;
+    width: 10em;
+    height: 10em;
+    background-color:rosybrown;
+  }
+
 </style>
 </head>
-    <body>
-    <h1 style="color:green;">This is the home page! Welcome</h1>
+<body style = "background-color: floralwhite;">
+    <div  class="block1"></div>
+    <div  class="block2"></div>
+    <div  class="block3"></div>
+    </div>
     <br>
-    <p style="color:green">These are your options:</p>
+    <h1 class="title">This is the home page! Welcome</h1>
     <br>
-    <a th:href="@{/players}"><b>Players</b></a>
+<!--    <p class="title"> These are your options:</p>-->
+<!--    <p style="color:indianred">These are your options:</p>-->
+    <br>
+    <a th:href="@{/login}"><b>Log In</b></a>
+<!--<button id="myBtn" th:href="@{/players}">Log In</button>-->
+<!--    <a class="title" th:href="@{/players}"><b>Players</b></a>-->
     <br>
     <a th:href="@{/start}">Start the Game!</a>
+    <br>
+    <br>
+    <p sec:authorize="isAuthenticated()" class="title" th:inline="text">Current logged user: [[${#httpServletRequest.remoteUser}]]</p>
+
+    <div sec:authorize="isAuthenticated()">
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+    </div>
+
     </body>
 
 </html>

@@ -2,14 +2,14 @@
 <html>
 <head>
     <title>List of users</title>
+    <style>
+          body {
+  background-image: url("poza.jpg");
+}
+    </style>
 </head>
 <body>
-<a th:href="@{/person/add}">ADD</a>
-<table th:each="person: ${person}">
-    <tr>
-        <td th:text="${person.name}"></td>
-        <td><a th:href="@{'/persons/delete/' + ${person.id}}">delete</a></td>
-    </tr>
-</table>
+
+
 </body>
 </html>
