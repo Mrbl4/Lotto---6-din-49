@@ -32,26 +32,11 @@ public class PlayerService {
         return null;
     }
 
-    public Set<Integer> generateWinningNumbers() {
-        Set<Integer> winningNumbers = new HashSet<>();
-        Random randomizer = new Random();
-        int numberOfNumbers = 0;
-        while (numberOfNumbers < 6) {
-            int number = randomizer.nextInt(1, 49);
-            if (!winningNumbers.contains(number)) {
-                numberOfNumbers++;
-                winningNumbers.add(number);
-            }
-        }
-
-        System.out.println("The winning numbers are : ");
-        for (Integer i : winningNumbers) {
-            System.out.print(i + " ");
-        }
-        return winningNumbers;
+    public Player savePlayer(String username, String password) {
+        Player entity = new Player(username, passwordEncoder.encode(password));
+        entity.setRole("ROLE_USER");
+        return playerRepository.save(entity);
     }
 
-    public Player savePlayer(String name, String password) {
-        return playerRepository.save(new Player(name, passwordEncoder.encode(password)));
-    }
+
 }

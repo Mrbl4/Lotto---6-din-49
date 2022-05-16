@@ -20,6 +20,7 @@ public class Ticket {
     private int noFive;
     private int noSix;
     //it automatically created the "playerId column
+    private int winningNumbers;
 
     @ManyToOne
     @JoinColumn(name = "playerId", nullable = false)
@@ -159,5 +160,13 @@ public class Ticket {
 
     public void setNoSix(int noSix) {
         this.noSix = noSix;
+    }
+
+    public int getWinningNumbers() {
+        return winningNumbers;
+    }
+
+    public void setWinningNumbers(int winningNumbers) {
+        this.winningNumbers = winningNumbers;
     }
 }
