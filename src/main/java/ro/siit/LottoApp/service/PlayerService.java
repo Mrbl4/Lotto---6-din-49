@@ -14,6 +14,7 @@ public class PlayerService {
     @Autowired //
     private PlayerRepository playerRepository;
 
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired

@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        * {background-color: peachpuff}
+    </style>
+</head>
 <body>
 <form th:action="@{'/players/' + ${id} + '/add-random-ticket'}" method="post">
+    <label>Please click OK if you Agree with the app generating a random Ticket</label>
+    <br>
 <input type="submit" value="OK">
 </form>
 </body>

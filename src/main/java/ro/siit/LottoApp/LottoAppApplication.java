@@ -14,7 +14,7 @@ public class LottoAppApplication {
 	}
 
 	@Bean
-	public PasswordEncoder encoder() {
+	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 
