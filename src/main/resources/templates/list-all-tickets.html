@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>List of Tickets</title>
+    <style th:inline="text">
+    body{
+        background: url{[[@{/src/main/resources/static/images}]]}
+    }
+</style>
+</head>
+<body>
+<a th:href="@{/}">Home</a>
+<br><br><br>
+<tr>
+    <th>ID</th>
+    <th>Numbers</th>
+</tr>
+<table th:each="ticket: ${tickets}">
+    <tr>
+        <td th:text="${ticket.id}"></td>
+        <td th:text="${ticket.noOne}"></td>
+        <td th:text="${ticket.noTwo}"></td>
+        <td th:text="${ticket.noThree}"></td>
+        <td th:text="${ticket.noFour}"></td>
+        <td th:text="${ticket.noFive}"></td>
+        <td th:text="${ticket.noSix}"></td>
+        <td><a th:href="@{'/tickets/delete/' + ${ticket.id}}">delete</a></td>
+    </tr>
+</table>
+</body>
+</html>

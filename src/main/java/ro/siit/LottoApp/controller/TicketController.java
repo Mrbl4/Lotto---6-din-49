@@ -51,4 +51,11 @@ public class TicketController {
         model.addAttribute("tickets", tickets);
         return "list-tickets";
     }
+
+    @RequestMapping("/all-tickets")
+    public String listAllTickets(Model model) {
+        List<Ticket> tickets = ticketRepository.findAll();
+        model.addAttribute("tickets", tickets);
+        return "list-all-tickets";
+    }
 }

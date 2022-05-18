@@ -22,7 +22,8 @@ public class RegistrationController {
 
     @GetMapping("/register")
     public String form(){
-        return "createUser";
+//        return "createUser";
+        return "signup";
     }
 
     @PostMapping("/register")

@@ -10,10 +10,13 @@ import ro.siit.LottoApp.entity.Player;
 import ro.siit.LottoApp.entity.Ticket;
 import ro.siit.LottoApp.repository.PlayerRepository;
 import ro.siit.LottoApp.repository.TicketRepository;
+import ro.siit.LottoApp.service.GameService;
 import ro.siit.LottoApp.service.PlayerService;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 @Controller
 //@RequestMapping("/players")
@@ -28,6 +31,9 @@ public class PlayerController {
     @Autowired
     PlayerService playerService;
 
+    @Autowired
+    GameService gameService;
+
 //    @RequestMapping("/")
     @RequestMapping("/players")
     public String list(Model model){
@@ -40,6 +46,7 @@ public class PlayerController {
     @GetMapping("/players/add")
     public String form(){
         return "addPlayer";
+//        return "signup";
     }
 
 
@@ -117,6 +124,16 @@ public class PlayerController {
         }
         playerRepository.deleteById(id);
         return "redirect:/players";
+    }
+
+    @RequestMapping("/statistics")
+    public String getStatistics(Model model, Model model1, Principal principal){
+        Set<Integer> winningNumbers = gameService.getWinningNumbers();
+        Player player = playerRepository.findByName(principal.getName());
+        List<Ticket> tickets = ticketRepository.findByPlayerId(player.getId());
+        model.addAttribute("tickets", tickets);
+        model1.addAttribute("numbers", winningNumbers);
+        return "statistics";
     }
 
 }

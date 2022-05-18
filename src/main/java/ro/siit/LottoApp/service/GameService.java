@@ -7,10 +7,7 @@ import ro.siit.LottoApp.entity.Ticket;
 import ro.siit.LottoApp.repository.PlayerRepository;
 import ro.siit.LottoApp.repository.TicketRepository;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class GameService {
@@ -24,10 +21,12 @@ public class GameService {
     private TicketRepository ticketRepository;
 
     public Set<Integer> getWinningNumbers() {
-        return winningNumbers;
+        return new HashSet<>(winningNumbers);
     }
 
     public void generateWinningNumbers() {
+        winningNumbers.clear();
+        resetStatistics();
         Random randomizer = new Random();
         int numberOfNumbers = 0;
         while (numberOfNumbers < 6) {
@@ -37,34 +36,51 @@ public class GameService {
                 winningNumbers.add(number);
             }
         }
+        setAllStatistics();
+    }
 
-        System.out.println("The winning numbers are : ");
-        for (Integer i : winningNumbers) {
-            System.out.print(i + " ");
+    public void setAllStatistics(){
+        List<Player> players= playerRepository.findAll();
+        for (Player p:players){
+            calculateStatistics(p);
         }
     }
 
-    public void getStatistics(Player player){
-//        List<Player> players = playerRepository.findAll();
-//        for (Player p: players){
+    public void calculateStatistics(Player player){
             List<Ticket> tickets = ticketRepository.findByPlayerId(player.getId());
             for (Ticket t: tickets){
                 int n = 0;
                 for (Integer i: winningNumbers){
-                    if (Integer.valueOf(t.getNoOne()).equals(i)){
-                        t.setWinningNumbers(n++);}
-                    if (Integer.valueOf(t.getNoTwo()).equals(i)){
-                            t.setWinningNumbers(n++);}
-                    if (Integer.valueOf(t.getNoThree()).equals(i)){
-                                t.setWinningNumbers(n++);}
-                    if (Integer.valueOf(t.getNoFour()).equals(i)){
-                                    t.setWinningNumbers(n++);}
-                    if (Integer.valueOf(t.getNoFive()).equals(i)){
-                                        t.setWinningNumbers(n++);}
-                    if (Integer.valueOf(t.getNoSix()).equals(i)){
-                                            t.setWinningNumbers(n++);
+//                    if (Integer.valueOf(t.getNoOne()).equals(i)){
+                    if (t.getNoOne()==i){
+                        n++;
+                        t.setWinningNumbers(n);}
+                    if (t.getNoTwo()==i){
+                            n++;
+                            t.setWinningNumbers(n);}
+                    if (t.getNoThree()==i){
+                                n++;
+                                t.setWinningNumbers(n);}
+                    if (t.getNoFour()==i){
+                                    n++;
+                                    t.setWinningNumbers(n);}
+                    if (t.getNoFive()==i){
+                                        n++;
+                                        t.setWinningNumbers(n);}
+                    if (t.getNoSix()==i){
+                                            n++;
+                                            t.setWinningNumbers(n);
                     }
                 }
+                ticketRepository.save(t);
             }
         }
+
+        private void resetStatistics(){
+        List<Ticket> tickets = ticketRepository.findAll();
+        for (Ticket t:tickets){
+            t.setWinningNumbers(0);
+            ticketRepository.save(t);
+        }
     }
+}
