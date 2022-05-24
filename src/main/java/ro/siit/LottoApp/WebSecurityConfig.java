@@ -13,15 +13,11 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-//    @Override
-//    protected void configure(HttpSecurity httpSecurity) throws Exception {
-//        httpSecurity.authorizeRequests().antMatchers("/").permitAll();
-//    } }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/").permitAll()
+                .antMatchers("/", "/css/**", "/images/**", "/static/**", "/winner").permitAll()
                 .antMatchers("/register").anonymous()
                 .antMatchers("/players", "/all-tickets", "/players/add", "/players/add", "/players/").hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated()
@@ -34,14 +30,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().permitAll();
     }
 }
-//                .antMatchers("/", "/register").permitAll()
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .defaultSuccessUrl("/", true)
-//                .permitAll()
-//                .and()
-//                .logout().permitAll();
+
 
 

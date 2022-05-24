@@ -1,3 +1,43 @@
-body {
-background-color: green;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
+.nav {
+  text-align: center;
+  font-family: 'Comfortaa';font-size: 22px;
+  color: Red;
+  border-bottom: 1px solid #dee2e6;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 20px;6
 }
+
+.nav-link {
+  text-decoration: none;
+  display: inline-block;
+  padding: 13px 13px;
+  color: #212529;
+  margin-right: 5px;
+}
+
+.nav-link:hover {
+  text-decoration:none;
+  background-color: HoneyDew;
+  border-bottom: 2px solid #339af0
+}
+.nav-link.current {
+  border-bottom: 2px solid #1971c2;
+}
+.btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+@media (min-width: 768px) {
+  .nav {
+    font-size: 1.1rem;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .nav-link {
+    padding: 20px 20px;
+  }
+  }

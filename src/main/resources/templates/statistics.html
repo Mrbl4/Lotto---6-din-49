@@ -5,35 +5,35 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<body>
+<body th:style="'background: url(/images/3.png) no-repeat center center fixed;'">
 <a th:href="@{/}">Home</a>
 <br><br><br>
 <div class="container mt-5">
     <h2>The Winning Numbers:</h2>
-    <table class="table table-bordered table-striped table-sm table-hover table-success">
+    <table class="table table-bordered table-striped table-sm table-hover table-light">
         <td th:each="number: ${numbers}" th:text="${number}"></td>
     </table>
 </div>
 <br>
 
 <div class="container mt-5">
-<table class="table table-bordered table-striped table-sm table-hover table-active">
-    <tr>
-        <th rowspan="1">Ticket ID</th>
-        <th rowspan="1">Name</th>
-        <th colspan="6">Ticket's numbers</th>
-        <th align="center" colspan="1">Winning numbers</th>
+<table class="table table-bordered table-striped table-sm table-hover table-light">
+    <tr align="center">
+        <th style="width: 10%" rowspan="1">Ticket ID</th>
+        <th style="width: 25%" rowspan="1">Name</th>
+        <th style="width: 50%" colspan="6">Ticket's numbers</th>
+        <th style="width: 15%" align="center" colspan="1">Winning numbers</th>
     </tr>
     <tr th:each="ticket: ${tickets}">
-        <td th:text="${ticket.id}"></td>
-        <td th:text="${ticket.player.name}"></td>
-        <td th:text="${ticket.noOne}"></td>
-        <td th:text="${ticket.noTwo}"></td>
-        <td th:text="${ticket.noThree}"></td>
-        <td th:text="${ticket.noFour}"></td>
-        <td th:text="${ticket.noFive}"></td>
-        <td th:text="${ticket.noSix}"></td>
-        <td th:text="${ticket.winningNumbers}"></td>
+        <td align="center" th:text="${ticket.id}"></td>
+        <td align="center" th:text="${ticket.player.name}"></td>
+        <td align="center" th:text="${ticket.noOne}"></td>
+        <td align="center" th:text="${ticket.noTwo}"></td>
+        <td align="center" th:text="${ticket.noThree}"></td>
+        <td align="center" th:text="${ticket.noFour}"></td>
+        <td align="center" th:text="${ticket.noFive}"></td>
+        <td align="center" th:text="${ticket.noSix}"></td>
+        <td align="center" th:text="${ticket.winningNumbers}"></td>
     </tr>
 </table>
 </div>

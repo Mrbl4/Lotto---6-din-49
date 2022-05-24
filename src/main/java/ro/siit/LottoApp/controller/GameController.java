@@ -40,4 +40,11 @@ public class GameController {
         model1.addAttribute("numbers", winningNumbers);
         return "statistics";
     }
+
+    @RequestMapping("/winner")
+    public String getWinningNumbers(Model model){
+        Set<Integer> numbers = gameService.getWinningNumbers();
+        model.addAttribute("numbers", numbers);
+        return "winning";
+    }
 }

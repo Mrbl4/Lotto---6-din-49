@@ -7,7 +7,7 @@
 
 </head>
 
-<body>
+<body th:style="'background: url(/images/3.png) no-repeat center center fixed;'">
 
 
 <div class="btn-group">
@@ -17,12 +17,23 @@
 
 <div class="container mt-5">
     <h2>List of players</h2>
-    <table class="table table-bordered table-striped table-sm table-hover">
-        <tr><th>Name</th><th>Action</th></tr>
+    <table class="table table-bordered table-striped table-sm table-hover table-light">
+        <tr align="center">
+            <th style="width: 40%">Name</th>
+            <th style="width: 30%"></th>
+            <th style="width: 30%"></th>
+        </tr>
         <tr th:each="player: ${players}">
-            <td th:text="${player.name}"></td>
-            <td><form th:action="@{'/players/delete/' + ${player.id}}" method="post"><input type="submit" class="btn btn-danger" value="Delete"/></form></td>
-            <td><form th:action="@{'/players/' + ${player.id} + '/add-ticket'}" method="get"><input type="submit" class="btn btn-danger" value="Add Ticket"/></form></td>
+            <td align="center" th:text="${player.name}"></td>
+            <td align="center">
+                <form th:action="@{'/players/delete/' + ${player.id}}" method="post"><input type="submit" class="btn btn-danger" value="Delete"/>
+                </form>
+            </td>
+            <td align="center">
+                <form th:action="@{'/players/' + ${player.id} + '/add-ticket'}" method="get"><input type="submit" class="btn btn-success" value="Add Ticket"/></form>
+                <form th:action="@{'/players/' + ${id} + '/add-random-ticket'}" method="get"><input type="submit" class="btn btn-success" value="Add Random Ticket"/>
+            </form>
+            </td>
         </tr>
     </table>
 

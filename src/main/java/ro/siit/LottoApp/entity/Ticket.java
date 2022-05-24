@@ -5,6 +5,10 @@ import org.springframework.http.ResponseEntity;
 import ro.siit.LottoApp.IncorrectNumberException;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="Tickets")
@@ -26,11 +30,55 @@ public class Ticket {
     @JoinColumn(name = "playerId", nullable = false)
     private Player player;
 
+    @Transient
+    Set<Integer> numbers = new HashSet<>();
+
     public Ticket() {
     }
 
     public Ticket(int noOne, int noTwo, int noThree, int noFour, int noFive, int noSix){
-//        try {
+        addNumberToSet(noOne);
+        addNumberToSet(noTwo);
+        addNumberToSet(noThree);
+        addNumberToSet(noFour);
+        addNumberToSet(noFive);
+        addNumberToSet(noSix);
+        if (numbers.size() == 6){
+            List<Integer> targetList = new ArrayList<>(numbers);
+            this.noOne = targetList.get(0);
+            this.noTwo = targetList.get(1);
+            this.noThree = targetList.get(2);
+            this.noFour = targetList.get(3);
+            this.noFive = targetList.get(4);
+            this.noSix = targetList.get(5);
+        }
+        else throw new IncorrectNumberException();
+
+//        if (checkValidNumber(noOne)){
+//        this.noOne = noOne;}
+//        else throw new IncorrectNumberException();
+//
+//        if (checkValidNumber(noTwo)){
+//            this.noTwo = noTwo;}
+//        else throw new IncorrectNumberException();
+//
+//        if (checkValidNumber(noThree)){
+//        this.noThree = noThree;}
+//        else throw new IncorrectNumberException();
+//
+//        if (checkValidNumber(noFour)){
+//        this.noFour = noFour;}
+//        else throw new IncorrectNumberException();
+//
+//        if (checkValidNumber(noFive)){
+//        this.noFive = noFive;}
+//        else throw new IncorrectNumberException();
+//
+//        if (checkValidNumber(noSix)){
+//        this.noSix = noSix;}
+//        else throw new IncorrectNumberException();
+
+        //        try {
 //            checkValidNumber(noOne);
 //            checkValidNumber(noTwo);
 //            checkValidNumber(noThree);
@@ -45,31 +93,6 @@ public class Ticket {
 //            this.noSix = noSix;
 //        }
 //        catch (IncorrectNumberException e){};
-
-        if (checkValidNumber(noOne)){
-        this.noOne = noOne;}
-        else throw new IncorrectNumberException();
-
-        if (checkValidNumber(noTwo)){
-            this.noTwo = noTwo;}
-        else throw new IncorrectNumberException();
-
-        if (checkValidNumber(noThree)){
-        this.noThree = noThree;}
-        else throw new IncorrectNumberException();
-
-        if (checkValidNumber(noFour)){
-        this.noFour = noFour;}
-        else throw new IncorrectNumberException();
-
-        if (checkValidNumber(noFive)){
-        this.noFive = noFive;}
-        else throw new IncorrectNumberException();
-
-        if (checkValidNumber(noSix)){
-        this.noSix = noSix;}
-        else throw new IncorrectNumberException();
-
     }
 
     public Ticket(int noOne, int noTwo, int noThree, int noFour, int noFive, int noSix, Player player) {
@@ -90,6 +113,19 @@ public class Ticket {
         this.noFive = noFive;
         this.noSix = noSix;
         this.player = player;
+    }
+
+    private boolean checkValidNumber(int i){
+//        if ((i>0) && (i<50)) throw new IncorrectNumberException();
+        if ((i>0) && (i<50)) return true;
+        return false;
+    }
+
+    private void addNumberToSet(int i){
+        if (checkValidNumber(i)){
+            numbers.add(i);
+        }
+        else throw new IncorrectNumberException();
     }
 
     public Long getId() {
@@ -148,11 +184,7 @@ public class Ticket {
         this.player = player;
     }
 
-    private boolean checkValidNumber(int i){
-//        if ((i>0) && (i<50)) throw new IncorrectNumberException();
-        if ((i>0) && (i<50)) return true;
-        return false;
-    }
+
 
     public int getNoSix() {
         return noSix;

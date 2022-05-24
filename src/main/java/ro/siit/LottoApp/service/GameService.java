@@ -13,6 +13,7 @@ import java.util.*;
 public class GameService {
 
     private Set<Integer> winningNumbers = new HashSet<>();
+    private Set<Integer> lastWinningNumbers = new HashSet<>();
 
     @Autowired
     private PlayerRepository playerRepository;
@@ -25,6 +26,7 @@ public class GameService {
     }
 
     public void generateWinningNumbers() {
+        lastWinningNumbers = winningNumbers;
         winningNumbers.clear();
         resetStatistics();
         Random randomizer = new Random();

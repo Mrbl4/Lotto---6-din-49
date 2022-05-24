@@ -3,18 +3,9 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <title> Log In to Lotto App </title>
-    <style>
 
-
-* {background-color: peachpuff}
-
-<!--    body {-->
-<!--  background-image: url("poza.jpg");-->
-<!--}-->
-
-    </style>
 </head>
-<body>
+<body th:style="'background: url(/images/3.png) no-repeat center center fixed;'">
 <div th:if="${param.error}">
     Invalid username and password.
 </div>
