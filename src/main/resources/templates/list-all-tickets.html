@@ -1,31 +1,56 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>List of Tickets</title>
-    <style th:inline="text">
-    body{
-        background: url{[[@{/src/main/resources/static/images}]]}
-    }
+    <title>List of All Registered Tickets</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link th:href="@{/css/custom.css}" rel="stylesheet">
 </style>
 </head>
 <body th:style="'background: url(/images/3.png) no-repeat center center fixed;'">
-<a th:href="@{/}">Home</a>
-<br><br><br>
-<tr>
-    <th>ID</th>
-    <th>Numbers</th>
-</tr>
-<table th:each="ticket: ${tickets}">
-    <tr>
-        <td th:text="${ticket.id}"></td>
-        <td th:text="${ticket.noOne}"></td>
-        <td th:text="${ticket.noTwo}"></td>
-        <td th:text="${ticket.noThree}"></td>
-        <td th:text="${ticket.noFour}"></td>
-        <td th:text="${ticket.noFive}"></td>
-        <td th:text="${ticket.noSix}"></td>
-        <td><a th:href="@{'/tickets/delete/' + ${ticket.id}}">delete</a></td>
-    </tr>
-</table>
+<nav class="nav">
+    <a href="/" class="nav-link">Home</a>
+</nav>
+<div class="container mt-5">
+    <h2>List of Tickets</h2>
+    <table class="table table-bordered table-striped table-sm table-hover table-light">
+        <tr align="center">
+            <th style="width: 10%" rowspan="1">ID</th>
+            <th style="width: 65%" colspan="6">Numbers</th>
+            <th style="width: 10%" rowspan="1"></th>
+            <th style="width: 15%" rowspan="1">Player</th>
+
+        </tr>
+        <tr th:each="ticket: ${tickets}">
+            <td align="center" th:text="${ticket.id}"></td>
+            <td align="center" th:text="${ticket.noOne}"></td>
+            <td align="center" th:text="${ticket.noTwo}"></td>
+            <td align="center" th:text="${ticket.noThree}"></td>
+            <td align="center" th:text="${ticket.noFour}"></td>
+            <td align="center" th:text="${ticket.noFive}"></td>
+            <td align="center" th:text="${ticket.noSix}"></td>
+            <td align="center">
+                <form th:action="@{'/tickets/delete-admin/{id}'}" method="post"><input type="submit" class="btn btn-danger" align="center" value="Delete"/>
+                </form>
+            </td>
+            <td align="center" th:text="${ticket.player.name}"></td>
+        </tr>
+    </table>
+<!--<tr>-->
+<!--    <th>ID</th>-->
+<!--    <th>Numbers</th>-->
+<!--</tr>-->
+<!--<table th:each="ticket: ${tickets}">-->
+<!--    <tr>-->
+<!--        <td th:text="${ticket.id}"></td>-->
+<!--        <td th:text="${ticket.noOne}"></td>-->
+<!--        <td th:text="${ticket.noTwo}"></td>-->
+<!--        <td th:text="${ticket.noThree}"></td>-->
+<!--        <td th:text="${ticket.noFour}"></td>-->
+<!--        <td th:text="${ticket.noFive}"></td>-->
+<!--        <td th:text="${ticket.noSix}"></td>-->
+<!--        <td><a th:href="@{'/tickets/delete/' + ${ticket.id}}">delete</a></td>-->
+<!--    </tr>-->
+<!--</table>-->
 </body>
 </html>

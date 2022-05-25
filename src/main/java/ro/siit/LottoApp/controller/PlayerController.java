@@ -100,18 +100,13 @@ public class PlayerController {
         Player player = playerService.getPlayerById(id);
         Random random = new Random();
         int[] generatedNumbers = new int[6];
-        for (int i=0; i<=5; i++){
+        for (int i = 0; i <= 5; i++) {
             generatedNumbers[i] = random.nextInt(1, 49);
         }
         Ticket ticket = new Ticket(generatedNumbers[0], generatedNumbers[1], generatedNumbers[2], generatedNumbers[3], generatedNumbers[4], generatedNumbers[5]);
         ticket.setPlayer(player);
         ticketRepository.save(ticket);
         return "redirect:/tickets";
-        //daca introduc nr corecte imi creaza tichetele, dar nu mai merge list-ul de pe tickets
-        //daca introduc nr incorect imi afiseaza "incorrect number"
-//        } catch (IncorrectNumberException e) {
-//            return "ticket-exception";
-//        }
     }
 
     @RequestMapping("/players/delete/{id}")

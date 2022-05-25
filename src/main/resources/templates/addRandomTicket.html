@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <style>
-        * {background-color: peachpuff}
-    </style>
 </head>
 <body th:style="'background: url(/images/3.png) no-repeat center center fixed;'">
 <form th:action="@{'/players/' + ${id} + '/add-random-ticket'}" method="post">
