@@ -28,34 +28,33 @@ public class TicketController {
     @Autowired
     private PlayerService playerService;
 
-//    @RequestMapping("/tickets")
-//    public String list(Model model) {
-//        List<Ticket> tickets = ticketRepository.findAll();
-//        model.addAttribute("tickets", tickets);
-//        return "list-tickets";
-//    }
-
-    @GetMapping("/tickets/delete/{id}")
-    public String deleteById(@PathVariable("id") Long id) {
-        ticketRepository.deleteById(id);
-        return "redirect:/tickets";
-    }
-
+        /**
+     * lists the Tickets of the logged in Player
+     * @param model
+     * @param principal
+     * @return
+     */
     @RequestMapping("/tickets")
-    public String listTicketsByUser(Model model, Principal principal) {
+    public String listTicketsByUser(Model model, Model model1, Principal principal) {
         Player player = playerRepository.findByName(principal.getName());
+        Long id = player.getId();
         List<Ticket> repoTickets = ticketRepository.findAll();
         List<Ticket> tickets = new ArrayList<>();
         for (Ticket t : repoTickets) {
             if (t.getPlayer().getId().equals(player.getId())) {
                 tickets.add(t);
             }
-            ;
         }
         model.addAttribute("tickets", tickets);
+        model1.addAttribute("id", id);
         return "list-tickets";
     }
 
+    /**
+     * lists all the registered Tickets, for all the Players
+     * @param model
+     * @return
+     */
     @RequestMapping("/all-tickets")
     public String listAllTickets(Model model) {
         List<Ticket> tickets = ticketRepository.findAll();
@@ -86,14 +85,14 @@ public class TicketController {
 
     @RequestMapping("/tickets/delete-admin/{id}")
     public String deleteByIdAdmin(@PathVariable("id") Long id){
-        List<Ticket> tickets = ticketRepository.findAll();
-        for (Ticket t:tickets){
-            if (t.getPlayer().getId().equals(id)){
-                ticketRepository.delete(t);
-            }
-        }
-        playerRepository.deleteById(id);
-        return "redirect:/players";
+        ticketRepository.deleteById(id);
+        return "redirect:/all-tickets";
+    }
+
+    @RequestMapping("/tickets/delete/{id}")
+    public String deleteById(@PathVariable("id") Long id) {
+        ticketRepository.deleteById(id);
+        return "redirect:/tickets";
     }
 
 

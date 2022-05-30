@@ -30,7 +30,7 @@
         <tr th:each="player: ${players}" th:if="${player.role == 'ROLE_USER'}">
             <td align="center" th:text="${player.name}"></td>
             <td align="center">
-                <form th:action="@{'/players/' + ${player.id} + '/add-ticket'}" method="get"><input type="submit" class="btn btn-success" value="Add Ticket"/>
+                <form th:action="@{'/players/' + ${player.id} + '/add-ticket-admin'}" method="get"><input type="submit" class="btn btn-success" value="Add Ticket"/>
                 </form>
             </td>
             <td align="center">

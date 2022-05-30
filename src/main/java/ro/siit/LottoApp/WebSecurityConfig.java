@@ -19,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/", "/css/**", "/images/**", "/static/**", "/winner").permitAll()
                 .antMatchers("/register").anonymous()
-                .antMatchers("/players", "/all-tickets", "/players/add", "/players/add", "/players/").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/players", "/all-tickets", "/players/add", "/players/").hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

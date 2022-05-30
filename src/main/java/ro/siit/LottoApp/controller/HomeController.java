@@ -35,14 +35,6 @@ public class HomeController {
         return "options";
     }
 
-//    @PostMapping("/options")
-//    public String options1(Model model){
-////        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-////        Player player = (Player) auth.getPrincipal();
-////        Long id = player.getId();
-////        model.addAttribute("id", id);
-//        return "redirect:/players/{id}/add-ticket";
-//    }
 
 
 }

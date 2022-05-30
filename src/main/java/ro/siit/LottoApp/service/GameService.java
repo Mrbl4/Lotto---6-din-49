@@ -53,7 +53,6 @@ public class GameService {
             for (Ticket t: tickets){
                 int n = 0;
                 for (Integer i: winningNumbers){
-//                    if (Integer.valueOf(t.getNoOne()).equals(i)){
                     if (t.getNoOne()==i){
                         n++;
                         t.setWinningNumbers(n);}

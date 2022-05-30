@@ -121,6 +121,30 @@ public class PlayerController {
         return "redirect:/players";
     }
 
+    @GetMapping("/players/{id}/add-ticket-admin")
+    public String ticketFormAdmin(Model model, @PathVariable("id") Long id){
+        System.out.println("add ticket id = " + id);
+        model.addAttribute("id", id);
+        return "addTicketAdmin";
+    }
+
+
+    @PostMapping("/players/{id}/add-ticket-admin")
+    public String addTicketAdmin(Model model,
+                            @RequestParam("noOne") int number1,
+                            @RequestParam("noTwo") int number2,
+                            @RequestParam("noThree") int number3,
+                            @RequestParam("noFour") int number4,
+                            @RequestParam("noFive") int number5,
+                            @RequestParam("noSix") int number6,
+                            @PathVariable("id") Long id) {
+        Player player = playerService.getPlayerById(id);
+        Ticket ticket = new Ticket(number1, number2, number3, number4, number5, number6);
+        ticket.setPlayer(player);
+        ticketRepository.save(ticket);
+        return "redirect:/all-tickets";
+    }
+
     @RequestMapping("/statistics")
     public String getStatistics(Model model, Model model1, Principal principal){
         Set<Integer> winningNumbers = gameService.getWinningNumbers();

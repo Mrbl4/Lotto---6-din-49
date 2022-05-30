@@ -18,9 +18,6 @@ public class Player {
     @OneToMany(mappedBy = "id")
     private Set<Ticket> tickets;
 
-
-    //din controler sa adaug in set. save pe player
-
     public Player() {
     }
 

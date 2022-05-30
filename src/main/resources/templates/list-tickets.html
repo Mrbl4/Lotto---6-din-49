@@ -29,7 +29,7 @@
             <td align="center" th:text="${ticket.noFive}"></td>
             <td align="center" th:text="${ticket.noSix}"></td>
             <td align="center">
-                <form th:action="@{'/tickets/delete/{id}'}" method="post"><input type="submit" class="btn btn-danger" align="center" value="Delete"/>
+                <form th:action="@{'/tickets/delete/' + ${ticket.id}}" method="post"><input type="submit" class="btn btn-danger" align="center" value="Delete"/>
                 </form>
             </td>
         </tr>

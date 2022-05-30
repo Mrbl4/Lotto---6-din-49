@@ -53,46 +53,6 @@ public class Ticket {
             this.noSix = targetList.get(5);
         }
         else throw new IncorrectNumberException();
-
-//        if (checkValidNumber(noOne)){
-//        this.noOne = noOne;}
-//        else throw new IncorrectNumberException();
-//
-//        if (checkValidNumber(noTwo)){
-//            this.noTwo = noTwo;}
-//        else throw new IncorrectNumberException();
-//
-//        if (checkValidNumber(noThree)){
-//        this.noThree = noThree;}
-//        else throw new IncorrectNumberException();
-//
-//        if (checkValidNumber(noFour)){
-//        this.noFour = noFour;}
-//        else throw new IncorrectNumberException();
-//
-//        if (checkValidNumber(noFive)){
-//        this.noFive = noFive;}
-//        else throw new IncorrectNumberException();
-//
-//        if (checkValidNumber(noSix)){
-//        this.noSix = noSix;}
-//        else throw new IncorrectNumberException();
-
-        //        try {
-//            checkValidNumber(noOne);
-//            checkValidNumber(noTwo);
-//            checkValidNumber(noThree);
-//            checkValidNumber(noFour);
-//            checkValidNumber(noFive);
-//            checkValidNumber(noSix);
-//            this.noOne = noOne;
-//            this.noTwo = noTwo;
-//            this.noThree = noThree;
-//            this.noFour = noFour;
-//            this.noFive = noFive;
-//            this.noSix = noSix;
-//        }
-//        catch (IncorrectNumberException e){};
     }
 
     public Ticket(int noOne, int noTwo, int noThree, int noFour, int noFive, int noSix, Player player) {

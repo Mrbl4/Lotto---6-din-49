@@ -29,16 +29,12 @@ h1, h2, h3, h4, h5, h6 {
     <a sec:authorize="isAnonymous()" href="/login" class="nav-link">Log In</a>
     <a sec:authorize="isAnonymous()" href="/register" class="nav-link">Sign Up</a>
 
-<!--    <a sec:authorize="isAuthenticated()" th:if="${#request.isUserInRole('USER')}" href="/options" class="nav-link">Options</a>-->
     <li sec:authorize="isAuthenticated()" th:if="${#request.isUserInRole('USER')}" class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Options
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" th:href="@{'/options'}">Add Ticket</a></li>
-<!--            <li><a class="dropdown-item" th:href="@{'/players/' + ${id} + '/add-random-ticket'}">Add Random Ticket</a></li>-->
-<!--            <li><a class="dropdown-item" th:href="/">Add Ticket</a></li>-->
-<!--            <li><a class="dropdown-item" th:href="/">Add Random Ticket</a></li>-->
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" th:href="@{'/tickets'}">Your tickets</a></li>
             <li><a class="dropdown-item" th:href="@{'/statistics'}">Your results</a></li>
@@ -51,17 +47,6 @@ h1, h2, h3, h4, h5, h6 {
     <a href="/winner" class="nav-link">See last game's winning numbers</a>
     <a href="/about/" class="nav-link">About</a>
     </nav>
-
-
-<!--<div class="text-center">-->
-<!--<div class="btn-group">-->
-<!--    <a sec:authorize="isAnonymous()" th:href="@{/login}" type="button" class="btn btn-outline-primary btn-lg">Log In</a>-->
-<!--    <a sec:authorize="isAnonymous()" th:href="@{/register}" type="button" class="btn btn-outline-primary btn-lg">Sign Up</a>-->
-
-<!--    </div>-->
-<!--</div>-->
-
-<!--<img th:src="@{/images/3.png}">-->
 
     <br><br><br><br><br>
 
@@ -80,34 +65,8 @@ h1, h2, h3, h4, h5, h6 {
 
     <br>
 
-<!--<div class="text-center">-->
-<!--    <h1 class="title">This is the home page! Welcome</h1>-->
-<!--</div>-->
     <br>
-<!--<a sec:authorize="isAuthenticated()" th:if="${#request.isUserInRole('USER')}" th:href="@{/options}"><b>Options</b></a>-->
 
-
-
-
-
-
-<!--    <div th:if="${#request.isUserInRole('ADMIN')}">-->
-<!--    <a th:href="@{/start}">Start the Game!</a>-->
-<!--    </div>-->
-
-
-<!--    <div th:if="${#request.isUserInRole('ADMIN')}">-->
-<!--        <a th:href="@{/all-tickets}">Registered tickets</a>-->
-<!--    </div>-->
-
-
-
-<!--    <div th:if="${#request.isUserInRole('ADMIN')}">-->
-<!--        <a th:href="@{/players}">Players</a>-->
-<!--    </div>-->
-
-
-<!--<td><a th:if="${#request.isUserInRole('ADMIN')}" th:href="@{'/allstatistics'}">See statistics</a></td>-->
 <br>
     <p sec:authorize="isAuthenticated()" class="title" th:inline="text">Current logged user: [[${#httpServletRequest.remoteUser}]]</p>
 
@@ -116,6 +75,5 @@ h1, h2, h3, h4, h5, h6 {
         <input type="submit" value="Sign Out"/>
     </form>
     </div>
-
     </body>
 </html>
