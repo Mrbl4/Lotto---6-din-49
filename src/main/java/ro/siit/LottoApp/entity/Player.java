@@ -42,10 +42,6 @@ public class Player {
         this.name = name;
     }
 
-    public void getPlayerById(Long id){
-
-    }
-
     public String getPassword() {
         return password;
     }

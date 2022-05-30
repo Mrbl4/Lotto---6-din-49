@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title> Add Ticket</title>
+    <title>Player Options</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -41,8 +41,8 @@
         <br>
         <div class="container">
             <div class="form-group">
-                <a th:href="@{'/players/' + ${id} + '/add-ticket'}" type="button" class="btn btn-danger">Add Ticket</a>
-                <a th:href="@{'/players/' + ${id} + '/add-random-ticket'}" class="btn btn-danger">Add Random Ticket</a>
+                <a th:href="@{'/players/' + ${id} + '/add-ticket'}" type="button" class="btn btn-success">Add Ticket</a>
+                <a th:href="@{'/players/' + ${id} + '/add-random-ticket'}" class="btn btn-success">Add Random Ticket</a>
 </div>
         </div>
     </form>

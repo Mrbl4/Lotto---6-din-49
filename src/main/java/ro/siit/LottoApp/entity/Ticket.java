@@ -76,7 +76,6 @@ public class Ticket {
     }
 
     private boolean checkValidNumber(int i){
-//        if ((i>0) && (i<50)) throw new IncorrectNumberException();
         if ((i>0) && (i<50)) return true;
         return false;
     }

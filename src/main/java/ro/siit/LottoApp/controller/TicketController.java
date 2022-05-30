@@ -13,8 +13,6 @@ import ro.siit.LottoApp.service.PlayerService;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
 
 @Controller
 public class TicketController {
@@ -29,10 +27,7 @@ public class TicketController {
     private PlayerService playerService;
 
         /**
-     * lists the Tickets of the logged in Player
-     * @param model
-     * @param principal
-     * @return
+     * lists the Tickets of the logged-in Player
      */
     @RequestMapping("/tickets")
     public String listTicketsByUser(Model model, Model model1, Principal principal) {
@@ -51,9 +46,7 @@ public class TicketController {
     }
 
     /**
-     * lists all the registered Tickets, for all the Players
-     * @param model
-     * @return
+     * lists all the registered Tickets, by all Players
      */
     @RequestMapping("/all-tickets")
     public String listAllTickets(Model model) {
@@ -62,33 +55,18 @@ public class TicketController {
         return "list-all-tickets";
     }
 
-    @GetMapping("/players/{id}/add-random-ticket-admin")
-    public String randomTicketForm(Model model, @PathVariable("id") Long id) {
-        model.addAttribute("id", id);
-        return "addRandomTicketAdmin";
-    }
-
-    @PostMapping("/players/{id}/add-random-ticket-admin")
-    public String addRandomTicket(Model model, @PathVariable("id") Long id) {
-//        try {
-        Player player = playerService.getPlayerById(id);
-        Random random = new Random();
-        int[] generatedNumbers = new int[6];
-        for (int i = 0; i <= 5; i++) {
-            generatedNumbers[i] = random.nextInt(1, 49);
-        }
-        Ticket ticket = new Ticket(generatedNumbers[0], generatedNumbers[1], generatedNumbers[2], generatedNumbers[3], generatedNumbers[4], generatedNumbers[5]);
-        ticket.setPlayer(player);
-        ticketRepository.save(ticket);
-        return "redirect:/all-tickets";
-    }
-
+/**
+ * deletes a Ticket by id and redirects to the page that lists all the registered Tickets, by all Player
+ */
     @RequestMapping("/tickets/delete-admin/{id}")
     public String deleteByIdAdmin(@PathVariable("id") Long id){
         ticketRepository.deleteById(id);
         return "redirect:/all-tickets";
     }
 
+    /**
+     * deletes a Ticket by id and redirects to the page that list all the Tickets of the logged-in Player
+     */
     @RequestMapping("/tickets/delete/{id}")
     public String deleteById(@PathVariable("id") Long id) {
         ticketRepository.deleteById(id);

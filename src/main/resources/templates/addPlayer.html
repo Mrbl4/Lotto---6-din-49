@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title> Add User </title>
+    <title> Add Player </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -37,8 +37,6 @@
     </style>
 </head>
 <body th:style="'background: url(/images/3.png) no-repeat center center fixed;'">
-Please enter the Player's information:
-<a th:href="@{/}">Home</a>
 <br><br><br>
 <div class="login-form">
     <form th:action="@{'/players/add'}" method="post">

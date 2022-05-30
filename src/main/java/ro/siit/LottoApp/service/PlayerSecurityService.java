@@ -10,7 +10,6 @@ import ro.siit.LottoApp.entity.Player;
 import ro.siit.LottoApp.repository.PlayerRepository;
 import ro.siit.LottoApp.service.model.CustomUserDetails;
 
-import java.util.Collections;
 import java.util.Set;
 
 @Service
